@@ -611,7 +611,6 @@ def main():
             active_dataloader = train_dataloader
         for step, batch in enumerate(active_dataloader):
             with accelerator.accumulate(model):
-                print("$"*50,batch['input_ids'].shape,batch['labels'].shape)
                 outputs = model(**batch)
                 loss = outputs.loss
                 # We keep track of the loss at each epoch
